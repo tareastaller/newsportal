@@ -1,0 +1,9 @@
+<h1>Index View</h1>
+<pre>
+<%= Cowsay.say("Hello", "Cow") %>
+</pre>
+<% @entries.each do |entry| %>
+  <h2><%= link_to entry.titular, entry_path(entry) %></h2>
+<% end %>
+
+<%= link_to "Add New", new_entry_path %>
