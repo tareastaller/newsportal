@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.all.order("created_at DESC")
+    @entries = @entries[0..9]
   end
 
   def new
@@ -35,7 +36,17 @@ class EntriesController < ApplicationController
     end
   end
 
+  def list
+    if user_signed_in?
+      @entries = Entry.all.order("created_at DESC")
+    else
+      redirect_to root_path
+    end
+  end
+
   def destroy
+    @entry.destroy
+    redirect_to list_path
   end
 
   private
@@ -46,5 +57,9 @@ class EntriesController < ApplicationController
 
     def find_entry
       @entry = Entry.find(params[:id])
+    end
+
+    def current_u
+       @current_u ||= User.find(session[:user_id]) if session[:user_id]
     end
 end

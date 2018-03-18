@@ -3,7 +3,19 @@
 <%= Cowsay.say("Hello", "Cow") %>
 </pre>
 <% @entries.each do |entry| %>
-  <h2><%= link_to entry.titular, entry_path(entry) %></h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= entry.titular %></h3>
+      <hr><%= entry.bajada %>
+    </div>
+    <div class="panel-body">
+      <%= entry.cuerpo %>
+      <%= link_to "More", entry_path(entry) %>
+
+    </div>
+  </div>
 <% end %>
 
-<%= link_to "Add New", new_entry_path %>
+<% if user_signed_in? %>
+  <%= link_to "Add New", new_entry_path %>
+<% end %>

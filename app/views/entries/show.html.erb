@@ -3,5 +3,8 @@
 <p><%= @entry.cuerpo %></p>
 
 <%= link_to "Back", root_path %>
-<%= link_to "Edit", edit_entry_path(@entry) %>
-<%= link_to "Delete", entry_path(@entry), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<% if user_signed_in? %>
+  <%= link_to "Edit", edit_entry_path(@entry) %>
+  <%= link_to "Delete", entry_path(@entry), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>

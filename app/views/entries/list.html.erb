@@ -1,0 +1,24 @@
+<h1>Listing News</h1>
+
+<table>
+  <tr>
+    <th>Titular</th>
+    <th>Fecha de publicación</th>
+    <th>Acciones</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @entries.each do |entry| %>
+  <tr>
+    <td><%= entry.titular %></td>
+    <td><%= entry.created_at %></td>
+    <td><%= link_to "Edit", edit_entry_path(entry) %></td>
+    <td><%= link_to "Remove", entry, method: :delete, data: { confirm: "Are you sure?" } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+
+<%= link_to "New Entry", new_entry_path %>
