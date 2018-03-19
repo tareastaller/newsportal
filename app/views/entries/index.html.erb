@@ -3,7 +3,7 @@
 <%= Cowsay.say("Bienvenido a Portal Noticas", "Cow") %>
 </pre>
 
-<% @entries.each_with_index do |entry, i| %>
+<% @entries.each_with_index do |entry| %>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title"><%= entry.titular %></h3>
@@ -11,6 +11,7 @@
     </div>
     <div class="panel-body">
       <%= truncate(entry.cuerpo, :length => 500, :separator => ' ') %>
+      <hr><button type="button" class="btn btn-info"><%= entry.comments.length %></button>
       <%= link_to "Leer Más", entry_path(entry) %>
 
     </div>

@@ -13,7 +13,7 @@
       <tr>
         <td><%= entry.titular %></td>
         <td><%= entry.created_at %></td>
-        <td><%= link_to "Editar", edit_entry_path(entry) %>  <%= link_to "Eliminar", entry, method: :delete, data: { confirm: "Estás seguro?" } %></td>
+        <td><%= link_to "Editar", edit_entry_path(entry) %> - <%= link_to "Eliminar", entry, method: :delete, data: { confirm: "Estás seguro?" } %></td>
       </tr>
     <% end %>
   </tbody>
