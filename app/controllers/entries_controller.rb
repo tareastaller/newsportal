@@ -7,7 +7,11 @@ class EntriesController < ApplicationController
   end
 
   def new
-    @entry = Entry.new
+    if user_signed_in?
+      @entry = Entry.new
+    else
+      redirect_to root_path
+    end      
   end
 
   def create

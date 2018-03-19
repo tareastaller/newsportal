@@ -1,10 +1,23 @@
-<h2><%= @entry.titular %></h2>
-<h3><%= @entry.bajada %></h3>
-<p><%= @entry.cuerpo %></p>
+
+<div class="jumbotron">
+  <h1 class="display-4"><%= @entry.titular %></h1>
+  <p class="lead"><%= @entry.bajada %></p>
+  <hr class="my-4">
+  <p><%= @entry.cuerpo %></p>
+</div>
 
 <%= link_to "Back", root_path %>
 
 <% if user_signed_in? %>
   <%= link_to "Edit", edit_entry_path(@entry) %>
   <%= link_to "Delete", entry_path(@entry), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+<hr>
+<h3>Comentarios</h3>
+<%= link_to "Agregar Comentario", new_entry_comment_path(@entry)%>
+<%= @entry.comments.each do |c| %>
+  <div class="panel panel-info">
+    <div class="panel-body"><h5><strong><%= c.nombre %>:</strong></h5></div>
+    <div class="panel-footer"><%= c.contenido %></div>
+  </div>
 <% end %>

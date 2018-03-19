@@ -1,29 +1,6 @@
-<%= form_for(@entry) do |f| %>
-  <% if @entry.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@entry.errors.count, "error") %> prohibited
-        this noticia from being saved:</h2>
-    <ul>
-    <% @entry.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :titular %><br />
-    <%= f.text_field :titular %>
-  </div>
-  <div class="field">
-    <%= f.label :bajada %><br />
-    <%= f.text_field :bajada %>
-  </div>
-  <div class="field">
-    <%= f.label :cuerpo %><br />
-    <%= f.text_area :cuerpo %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= simple_form_for(@entry) do |f| %>
+  <%= f.input :titular %>
+  <%= f.input :bajada %>
+  <%= f.input :cuerpo %>
+  <%= f.button :submit %>
 <% end %>

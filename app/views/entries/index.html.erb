@@ -1,21 +1,22 @@
-<h1>Index View</h1>
+<h1>Portal Noticias</h1>
 <pre>
-<%= Cowsay.say("Hello", "Cow") %>
+<%= Cowsay.say("Bienvenido a Portal Noticas", "Cow") %>
 </pre>
-<% @entries.each do |entry| %>
+
+<% @entries.each_with_index do |entry, i| %>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title"><%= entry.titular %></h3>
       <hr><%= entry.bajada %>
     </div>
     <div class="panel-body">
-      <%= entry.cuerpo %>
-      <%= link_to "More", entry_path(entry) %>
+      <%= truncate(entry.cuerpo, :length => 500, :separator => ' ') %>
+      <%= link_to "Leer Más", entry_path(entry) %>
 
     </div>
   </div>
 <% end %>
 
 <% if user_signed_in? %>
-  <%= link_to "Add New", new_entry_path %>
+  <a href="entries/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Publicar Noticia</a>
 <% end %>

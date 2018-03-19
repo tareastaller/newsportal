@@ -14,13 +14,13 @@
       <div class="container">
 
         <div class="navbar-header">
-          <%= link_to "News", root_path, class: "navbar-brand" %>
+          <%= link_to "Portal Noticias", root_path, class: "navbar-brand" %>
         </div>
 
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "List", list_path %></li>
+            <li><%= link_to "Listado de Publicaciones", list_path %></li>
           <% else %>
             <li><%= link_to "ADMIN", new_user_session_path %></li>
           <% end %>
@@ -28,7 +28,7 @@
 
         <ul class="nav navbar-nav">
           <% if user_signed_in? %>
-            <li><%= link_to "Add New", new_entry_path %></li>
+            <li><%= link_to "Publicar Nueva Noticia", new_entry_path %></li>
           <% end %>
         </ul>
 

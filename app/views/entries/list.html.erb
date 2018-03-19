@@ -1,24 +1,21 @@
-<h1>Listing News</h1>
+<h1>Administrar Noticias</h1>
 
-<table>
-  <tr>
-    <th>Titular</th>
-    <th>Fecha de publicación</th>
-    <th>Acciones</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @entries.each do |entry| %>
-  <tr>
-    <td><%= entry.titular %></td>
-    <td><%= entry.created_at %></td>
-    <td><%= link_to "Edit", edit_entry_path(entry) %></td>
-    <td><%= link_to "Remove", entry, method: :delete, data: { confirm: "Are you sure?" } %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Titular</th>
+      <th scope="col">Fecha de publicación</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.titular %></td>
+        <td><%= entry.created_at %></td>
+        <td><%= link_to "Editar", edit_entry_path(entry) %>  <%= link_to "Eliminar", entry, method: :delete, data: { confirm: "Estás seguro?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br>
-
-<%= link_to "New Entry", new_entry_path %>
+<a href="entries/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Publicar Nueva Noticia</a>
