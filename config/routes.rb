@@ -6,4 +6,11 @@ Rails.application.routes.draw do
   root 'entries#index'
 
   get '/list', to: "entries#list"
+
+  namespace :api do
+    resources :entries, path: 'news' do
+      resources :comments
+    end
+  end
+
 end

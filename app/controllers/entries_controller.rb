@@ -11,7 +11,7 @@ class EntriesController < ApplicationController
       @entry = Entry.new
     else
       redirect_to root_path
-    end      
+    end
   end
 
   def create
